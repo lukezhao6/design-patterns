@@ -3,14 +3,14 @@ package com.luke.designpatterns.observerPattern;
 import java.util.ArrayList;
 import java.util.List;
 
-// 主题接口
+// 抽象的被观察者
 interface Subject {
     void addObserver(Observer observer);
     void removeObserver(Observer observer);
     void notifyObservers();
 }
 
-// 具体主题 - 气象站
+// 具体的被观察者 - 气象站
 class WeatherStation implements Subject {
     private List<Observer> observers;
     private float temperature;
@@ -46,7 +46,7 @@ class WeatherStation implements Subject {
     }
 }
 
-// 观察者接口
+// 抽象的观察者
 interface Observer {
     void update(float temperature, float humidity, float pressure);
 }
@@ -70,6 +70,7 @@ class TVDisplay implements Observer {
 // 客户端代码
 public class Client {
     public static void main(String[] args) {
+        // 创建被观察者
         WeatherStation weatherStation = new WeatherStation();
 
         // 添加观察者
